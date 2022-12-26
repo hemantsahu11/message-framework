@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .success{
+            color:green;
+        }
+    </style>
+</head>
+<body>
+  <form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Submit">
+  </form>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}
+                {{message.tags}}  <!-- It will return success if we are passing success message from backend  -->
+            {% endif %}
+            {{message}}
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
